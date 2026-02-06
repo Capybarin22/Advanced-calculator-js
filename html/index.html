@@ -4,40 +4,75 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Калькулятор</title>
-	<link rel="stylesheet" href="../css/localCalc.css">
+	<title>Научный калькулятор</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body class="page">
 	<!-- Шапка страницы -->
-	<header class="page__header"></header>
+	<header class="page__header">
+		<h1 class="header__title">Научный калькулятор</h1>
+	</header>
+	
 	<!-- Основное содержимое страницы -->
 	<div class="page__content">
-		<!-- Навигация -->
-		<nav class="page__nav"></nav>
+		<!-- Левая навигация -->
+		<nav class="page__nav">
+			<div class="nav__section">
+				<h3 class="nav__title">Функции</h3>
+				<ul class="nav__list">
+					<li class="nav__item" onclick="insertFunction('Math.sin(')">Синус (sin)</li>
+					<li class="nav__item" onclick="insertFunction('Math.cos(')">Косинус (cos)</li>
+					<li class="nav__item" onclick="insertFunction('Math.tan(')">Тангенс (tan)</li>
+					<li class="nav__item" onclick="insertFunction('Math.log(')">Натуральный логарифм (ln)</li>
+					<li class="nav__item" onclick="insertFunction('Math.log10(')">Десятичный логарифм (log10)</li>
+					<li class="nav__item" onclick="insertFunction('Math.log2(')">Логарифм по основанию 2 (log2)</li>
+				</ul>
+			</div>
+			<div class="nav__section">
+				<h3 class="nav__title">Константы</h3>
+				<ul class="nav__list">
+					<li class="nav__item" onclick="insertConstant('Math.PI')">π (Пи)</li>
+					<li class="nav__item" onclick="insertConstant('Math.E')">e (число Эйлера)</li>
+					<li class="nav__item" onclick="insertConstant('180/Math.PI')">Радиан в градусы</li>
+					<li class="nav__item" onclick="insertConstant('Math.PI/180')">Градусы в радианы</li>
+				</ul>
+			</div>
+		</nav>
+		
 		<!-- Основной контент: Калькулятор -->
 		<main class="calc">
 			<!-- Поля ввода -->
 			<div class="calc__inputs">
-				<input type="text" class="calc__input calc__input_type_task" placeholder="Введите задачу" autofocus>
-				<input type="text" class="calc__input calc__input_type_result" placeholder="Результат">
-				<!-- <input type="text" class="calc__input calc__input_type_memory" placeholder="Память"> -->
+				<input type="text" class="calc__input calc__input_type_task" placeholder="Введите математическое выражение" autofocus>
+				<input type="text" class="calc__input calc__input_type_result" placeholder="Результат" readonly>
 			</div>
+			
+			<!-- Отображение памяти -->
+			<div class="calc__memory-display">
+				<span>Память: <span id="memoryValue">0</span></span>
+				<span>История: <span id="historyCount">0</span> записей</span>
+			</div>
+			
 			<!-- Кнопки ввода -->
 			<div class="calc__buttons">
+				<!-- Первая колонка -->
 				<div class="calc__buttons-column calc__buttons-column_type_first">
-					<!-- <button class="calc__button calc__button_type_memory">MS</button> -->
-					<button class="calc__button calc__button_type_trig">sin</button>
+					<button class="calc__button calc__button_type_memory" title="Сохранить в память">MS</button>
+					<button class="calc__button calc__button_type_trig" title="Синус">sin</button>
 					<button class="calc__button calc__button_type_log" title='логарифм по основанию 2'>log2</button>
-					<button class="calc__button calc__button_type_operator calc__button_type_operator_power">x<sup>-1</sup></button>
-					<button class="calc__button calc__button_type_operator calc__button_type_operator_power">x<sup>y</sup></button>
-					<button class="calc__button calc__button_type_operator calc__button_type_operator_power"><sup>y</sup>√</button>
-					<button class="calc__button calc__button_type_operator calc__button_type_operator_power">x<sup>2</sup></button>
-					<button class="calc__button calc__button_type_operator calc__button_type_operator_power"><sup>2</sup>√</button>
+					<button class="calc__button calc__button_type_operator" title='Обратное число'>x⁻¹</button>
+					<button class="calc__button calc__button_type_operator" title='Возведение в степень'>xʸ</button>
+					<button class="calc__button calc__button_type_operator" title='Корень y-й степени'>ʸ√x</button>
+					<button class="calc__button calc__button_type_operator" title='Квадрат числа'>x²</button>
+					<button class="calc__button calc__button_type_operator" title='Квадратный корень'>√x</button>
 				</div>
+				
+				<!-- Вторая колонка -->
 				<div class="calc__buttons-column calc__buttons-column_type_second">
-					<!-- <button class="calc__button calc__button_type_memory">MR</button> -->
-					<button class="calc__button calc__button_type_trig">cos</button>
+					<button class="calc__button calc__button_type_memory" title="Восстановить из памяти">MR</button>
+					<button class="calc__button calc__button_type_trig" title="Косинус">cos</button>
 					<button class="calc__button calc__button_type_log" title='логарифм по основанию 10'>log10</button>
 					<button class="calc__button calc__button_type_bracket">(</button>
 					<button class="calc__button calc__button_type_number">7</button>
@@ -45,46 +80,72 @@
 					<button class="calc__button calc__button_type_number">1</button>
 					<button class="calc__button calc__button_type_number">0</button>
 				</div>
+				
+				<!-- Третья колонка -->
 				<div class="calc__buttons-column calc__buttons-column_type_third">
-					<!-- <button class="calc__button calc__button_type_memory">M+</button> -->
-					<button class="calc__button calc__button_type_trig">tg</button>
-					<button class="calc__button calc__button_type_log" title='Натуральный логарифм (по основанию 2.72)'>log</button>
+					<button class="calc__button calc__button_type_memory" title="Добавить к памяти">M+</button>
+					<button class="calc__button calc__button_type_trig" title="Тангенс">tan</button>
+					<button class="calc__button calc__button_type_log" title='Натуральный логарифм (по основанию e)'>ln</button>
 					<button class="calc__button calc__button_type_bracket">)</button>
 					<button class="calc__button calc__button_type_number">8</button>
 					<button class="calc__button calc__button_type_number">5</button>
 					<button class="calc__button calc__button_type_number">2</button>
 					<button class="calc__button calc__button_type_number">.</button>
 				</div>
+				
+				<!-- Четвертая колонка -->
 				<div class="calc__buttons-column calc__buttons-column_type_fourth">
-					<!-- <button class="calc__button calc__button_type_memory">M-</button> -->
-					<button class="calc__button calc__button_type_special">Backspace</button>
-					<button class="calc__button calc__button_type_constant">3.14</button>
-					<button class="calc__button calc__button_type_bracket"></button>
+					<button class="calc__button calc__button_type_memory" title="Вычесть из памяти">M-</button>
+					<button class="calc__button calc__button_type_special" title="Удалить последний символ">⌫</button>
+					<button class="calc__button calc__button_type_constant">π</button>
+					<button class="calc__button calc__button_type_operator" title="Факториал">!</button>
 					<button class="calc__button calc__button_type_number">9</button>
 					<button class="calc__button calc__button_type_number">6</button>
 					<button class="calc__button calc__button_type_number">3</button>
-					<button class="calc__button calc__button_type_operator">=</button>
+					<button class="calc__button calc__button_type_operator calc__button_type_equals" id="equalsButton">=</button>
 				</div>
+				
+				<!-- Пятая колонка -->
 				<div class="calc__buttons-column calc__buttons-column_type_fifth">
-					<!-- <button class="calc__button calc__button_type_memory">MC</button> -->
-					<button class="calc__button calc__button_type_special">Clear All</button>
-					<button class="calc__button calc__button_type_constant">2.72</button>
-					<button class="calc__button calc__button_type_operator calc__button_type_operator_factorial">!</button>
+					<button class="calc__button calc__button_type_memory" title="Очистить память">MC</button>
+					<button class="calc__button calc__button_type_special" title="Очистить все">C</button>
+					<button class="calc__button calc__button_type_constant">e</button>
 					<button class="calc__button calc__button_type_operator">/</button>
-					<button class="calc__button calc__button_type_operator">*</button>
+					<button class="calc__button calc__button_type_operator">×</button>
 					<button class="calc__button calc__button_type_operator">-</button>
 					<button class="calc__button calc__button_type_operator">+</button>
 				</div>
 			</div>
 		</main>
-		<!-- Дополнительная навигация или контент -->
-		<nav class="page__nav"></nav>
+		
+		<!-- Правая навигация -->
+		<nav class="page__nav">
+			<div class="nav__section">
+				<h3 class="nav__title">Инструкция</h3>
+				<ul class="nav__list">
+					<li class="nav__item">Используйте скобки для группировки операций</li>
+					<li class="nav__item">Для степеней используйте xʸ или **</li>
+					<li class="nav__item">Для корней используйте ʸ√x</li>
+					<li class="nav__item">Тригонометрические функции работают с радианами</li>
+					<li class="nav__item">Память сохраняет одно значение между сессиями</li>
+				</ul>
+			</div>
+			<div class="nav__section">
+				<h3 class="nav__title">История операций</h3>
+				<ul class="nav__list" id="historyList">
+					<!-- История будет загружена здесь -->
+				</ul>
+				<button class="calc__button calc__button_type_special" style="margin-top: 10px; height: 40px;" onclick="clearHistory()">Очистить историю</button>
+			</div>
+		</nav>
 	</div>
+	
 	<!-- Подвал страницы -->
-	<footer class="page__footer"></footer>
+	<footer class="page__footer">
+		<p>Научный калькулятор с расширенными функциями &copy; 2023</p>
+	</footer>
+	
 	<!-- Скрипты -->
-	<script src="../js/localCalc.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="../js/functionLibrary.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="../js/script.js"></script>
 </body>
-
 </html>
