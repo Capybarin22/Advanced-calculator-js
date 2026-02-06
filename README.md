@@ -1,43 +1,38 @@
-# JavaScript Calculator
+🧮 Научный калькулятор | Pet-проект
 
-## Project Goal
+Frontend Developer Portfolio Project | Live Demo | GitHub
+🎯 Цель проекта
 
-Create an interactive calculator using JavaScript that allows users to perform various mathematical operations, including basic arithmetic, power operations, factorials, trigonometric and logarithmic functions, and memory management.
+Разработать полнофункциональный научный калькулятор с современным UI/UX для демонстрации навыков фронтенд-разработки и алгоритмического мышления.
+🚀 Ключевые технологии
+Технология	Применение в проекте
+HTML5	Семантическая разметка, доступность
+CSS3	Flexbox, адаптивный дизайн, CSS-переменные, анимации
+JavaScript (ES6+)	ООП, работа с DOM, обработка событий, localStorage
 
-## Features
+📊 Демонстрируемые навыки
+1. Алгоритмические навыки
+    ✅ Парсинг математических выражений - обработка сложных выражений со скобками
+    ✅ Обработка приоритетов операций - корректное вычисление по правилам математики
 
-- **Basic Operations:**
-  - Addition, subtraction, multiplication, and division.
-  - Input handling via buttons with numbers and operators.
+2. Архитектурные решения
+    ✅ ООП подход - класс ScientificCalculator с инкапсуляцией логики
+    ✅ Модульная структура - разделение на UI, логику
+    ✅ Чистый код - читаемые функции, понятные названия переменных
+    ✅ Обработка ошибок - try/catch, пользовательские сообщения об ошибках
 
-- **Advanced Functions:**
-  - Power calculations, including squaring, root extraction, and inverse powers.
-  - Trigonometric (sin, cos, tan) and logarithmic functions.
+3. UI/UX компетенции
+    ✅ Интуитивный интерфейс - логичная группировка кнопок, понятные иконки
+    ✅ Микроанимации - feedback при нажатии кнопок, плавные переходы
+    ✅ Темная тема - современный дизайн с заботой о глазах пользователя
 
-- **Factorial:**
-  - Calculate the factorial of positive integers.
+Принципы разработки:
+    KISS - простота реализации сложных функций
+    DRY - переиспользование кода операций
+    YAGNI - только необходимый функционал
 
-- **Memory:**
-  - Save, retrieve, and clear values from memory.
-  - Memory operations: add (M+), subtract (M-), clear (MC), save (MS), recall (MR).
-
-- **Error Handling:**
-  - Display errors such as division by zero or invalid input.
-
-- **Input Management:**
-  - Clear all data or delete the last character.
-  - Supports parentheses for operation precedence.
-
-## Technical Details
-
-- **HTML and CSS:** 
-  - Create and style the calculator interface.
-
-- **JavaScript:** 
-  - Implement the calculator logic, handle button click events, and perform calculations.
-
-- **DOM Manipulation:** 
-  - Access input elements and display results.
-
-- **`eval` Function:** 
-  - Evaluate mathematical expressions entered by the user.
+Кейсы для демонстрации:
+"2 + 2 * 2" → 6        // Приоритет операций
+"sin(π/2)" → 1         // Тригонометрия
+"log10(100)" → 2       // Логарифмы
+"5! + √16" → 124       // Комбинированные операции
